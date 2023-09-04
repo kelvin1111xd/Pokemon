@@ -1,0 +1,3 @@
+C:\Users\USER\Downloads\Group9_P3_ver2\project\Debug\Pokemon.vcxproj.CopyComplete
+C:\Users\USER\Downloads\Group9_P3_ver2\project\Debug\Pokemon.exe
+C:\Users\USER\Downloads\Group9_P3_ver2\project\Debug\cpprest142_2_10d.dll

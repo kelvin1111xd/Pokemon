@@ -1,0 +1,1 @@
+在visual studio community 2019打開\project\Pokemon.sln後使用vs進行編譯

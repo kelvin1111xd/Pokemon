@@ -1,0 +1,64 @@
+﻿  BattleManager.cpp
+C:\Users\USER\Downloads\Group9_P3_ver2\project\BattleManager.h(34,35): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+C:\Users\USER\Downloads\Group9_P3_ver2\project\BattleManager.h(35,105): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+C:\Users\USER\Downloads\Group9_P3_ver2\project\BattleManager.h(38,1): warning C4150: deletion of pointer to incomplete type 'Player'; no destructor called
+C:\Users\USER\Downloads\Group9_P3_ver2\project\BattleManager.h(18): message : see declaration of 'Player'
+C:\Users\USER\Downloads\Group9_P3_ver2\project\BattleManager.h(39,1): warning C4150: deletion of pointer to incomplete type 'Player'; no destructor called
+C:\Users\USER\Downloads\Group9_P3_ver2\project\BattleManager.h(18): message : see declaration of 'Player'
+C:\Users\USER\Downloads\Group9_P3_ver2\project\Player.h(28,1): warning C4150: deletion of pointer to incomplete type 'Pokemon'; no destructor called
+C:\Users\USER\Downloads\Group9_P3_ver2\project\Player.h(16): message : see declaration of 'Pokemon'
+C:\Users\USER\Downloads\Group9_P3_ver2\project\Pokemon.h(42,1): warning C4150: deletion of pointer to incomplete type 'Move'; no destructor called
+C:\Users\USER\Downloads\Group9_P3_ver2\project\Pokemon.h(15): message : see declaration of 'Move'
+C:\Users\USER\Downloads\Group9_P3_ver2\project\BattleManager.cpp(191,41): warning C4018: '<': signed/unsigned mismatch
+C:\Users\USER\Downloads\Group9_P3_ver2\project\BattleManager.cpp(466,41): warning C4018: '<': signed/unsigned mismatch
+C:\Users\USER\Downloads\Group9_P3_ver2\project\BattleManager.cpp(548,41): warning C4018: '<': signed/unsigned mismatch
+C:\Users\USER\Downloads\Group9_P3_ver2\project\BattleManager.cpp(563,41): warning C4018: '<': signed/unsigned mismatch
+C:\Users\USER\Downloads\Group9_P3_ver2\project\BattleManager.cpp(747,41): warning C4018: '<': signed/unsigned mismatch
+C:\Users\USER\Downloads\Group9_P3_ver2\project\BattleManager.cpp(793,40): warning C4018: '<': signed/unsigned mismatch
+C:\Users\USER\Downloads\Group9_P3_ver2\project\BattleManager.cpp(1006,41): warning C4018: '<': signed/unsigned mismatch
+C:\Users\USER\Downloads\Group9_P3_ver2\project\BattleManager.cpp(1052,40): warning C4018: '<': signed/unsigned mismatch
+C:\Users\USER\Downloads\Group9_P3_ver2\project\BattleManager.cpp(1129,20): warning C4018: '<': signed/unsigned mismatch
+C:\Users\USER\Downloads\Group9_P3_ver2\project\BattleManager.cpp(1145,20): warning C4018: '<': signed/unsigned mismatch
+  PokemonSystem.cpp
+C:\Users\USER\Downloads\Group9_P3_ver2\project\BattleManager.h(34,35): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+C:\Users\USER\Downloads\Group9_P3_ver2\project\BattleManager.h(35,105): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+C:\Users\USER\Downloads\Group9_P3_ver2\project\BattleManager.h(38,1): warning C4150: deletion of pointer to incomplete type 'Player'; no destructor called
+C:\Users\USER\Downloads\Group9_P3_ver2\project\BattleManager.h(18): message : see declaration of 'Player'
+C:\Users\USER\Downloads\Group9_P3_ver2\project\BattleManager.h(39,1): warning C4150: deletion of pointer to incomplete type 'Player'; no destructor called
+C:\Users\USER\Downloads\Group9_P3_ver2\project\BattleManager.h(18): message : see declaration of 'Player'
+C:\Users\USER\Downloads\Group9_P3_ver2\project\Player.h(28,1): warning C4150: deletion of pointer to incomplete type 'Pokemon'; no destructor called
+C:\Users\USER\Downloads\Group9_P3_ver2\project\Player.h(16): message : see declaration of 'Pokemon'
+C:\Users\USER\Downloads\Group9_P3_ver2\project\Pokemon.h(42,1): warning C4150: deletion of pointer to incomplete type 'Move'; no destructor called
+C:\Users\USER\Downloads\Group9_P3_ver2\project\Pokemon.h(15): message : see declaration of 'Move'
+C:\Users\USER\Downloads\Group9_P3_ver2\project\PokemonSystem.cpp(65,35): warning C4018: '<': signed/unsigned mismatch
+C:\Users\USER\Downloads\Group9_P3_ver2\project\PokemonSystem.cpp(97,35): warning C4018: '<': signed/unsigned mismatch
+C:\Users\USER\Downloads\Group9_P3_ver2\project\PokemonSystem.cpp(113,35): warning C4018: '<': signed/unsigned mismatch
+C:\Users\USER\Downloads\Group9_P3_ver2\project\PokemonSystem.cpp(188,35): warning C4018: '<': signed/unsigned mismatch
+C:\Users\USER\Downloads\Group9_P3_ver2\project\PokemonSystem.cpp(205,35): warning C4018: '<': signed/unsigned mismatch
+C:\Users\USER\Downloads\Group9_P3_ver2\project\PokemonSystem.cpp(221,35): warning C4018: '<': signed/unsigned mismatch
+C:\Users\USER\Downloads\Group9_P3_ver2\project\PokemonSystem.cpp(297,35): warning C4018: '<': signed/unsigned mismatch
+C:\Users\USER\Downloads\Group9_P3_ver2\project\PokemonSystem.cpp(313,35): warning C4018: '<': signed/unsigned mismatch
+C:\Users\USER\Downloads\Group9_P3_ver2\project\PokemonSystem.cpp(358,35): warning C4018: '<': signed/unsigned mismatch
+C:\Users\USER\Downloads\Group9_P3_ver2\project\PokemonSystem.cpp(621,31): warning C4018: '<': signed/unsigned mismatch
+C:\Users\USER\Downloads\Group9_P3_ver2\project\PokemonSystem.cpp(634,31): warning C4018: '<': signed/unsigned mismatch
+C:\Users\USER\Downloads\Group9_P3_ver2\project\PokemonSystem.cpp(669,22): warning C4018: '<': signed/unsigned mismatch
+C:\Users\USER\Downloads\Group9_P3_ver2\project\PokemonSystem.cpp(708,31): warning C4018: '<': signed/unsigned mismatch
+C:\Users\USER\Downloads\Group9_P3_ver2\project\PokemonSystem.cpp(773,27): warning C4018: '<': signed/unsigned mismatch
+C:\Users\USER\Downloads\Group9_P3_ver2\project\PokemonSystem.cpp(839,31): warning C4018: '<': signed/unsigned mismatch
+  main.cpp
+C:\Users\USER\Downloads\Group9_P3_ver2\project\BattleManager.h(34,35): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+C:\Users\USER\Downloads\Group9_P3_ver2\project\BattleManager.h(35,105): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+C:\Users\USER\Downloads\Group9_P3_ver2\project\BattleManager.h(38,1): warning C4150: deletion of pointer to incomplete type 'Player'; no destructor called
+C:\Users\USER\Downloads\Group9_P3_ver2\project\BattleManager.h(18): message : see declaration of 'Player'
+C:\Users\USER\Downloads\Group9_P3_ver2\project\BattleManager.h(39,1): warning C4150: deletion of pointer to incomplete type 'Player'; no destructor called
+C:\Users\USER\Downloads\Group9_P3_ver2\project\BattleManager.h(18): message : see declaration of 'Player'
+C:\Users\USER\Downloads\Group9_P3_ver2\project\Player.h(28,1): warning C4150: deletion of pointer to incomplete type 'Pokemon'; no destructor called
+C:\Users\USER\Downloads\Group9_P3_ver2\project\Player.h(16): message : see declaration of 'Pokemon'
+C:\Users\USER\Downloads\Group9_P3_ver2\project\Pokemon.h(42,1): warning C4150: deletion of pointer to incomplete type 'Move'; no destructor called
+C:\Users\USER\Downloads\Group9_P3_ver2\project\Pokemon.h(15): message : see declaration of 'Move'
+  Generating code
+  0 of 4726 functions ( 0.0%) were compiled, the rest were copied from previous compilation.
+    0 functions were new in current compilation
+    0 functions had inline decision re-evaluated but remain unchanged
+  Finished generating code
+  Pokemon.vcxproj -> C:\Users\USER\Downloads\Group9_P3_ver2\project\Release\Pokemon.exe

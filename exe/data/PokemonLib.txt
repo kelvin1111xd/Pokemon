@@ -1,0 +1,63 @@
+Venusaur
+2 Grass Poison
+187 147 148 167 167 145
+Charizard
+2 Fire Flying
+185 149 143 177 150 167
+Blastoise
+1 Water
+186 148 167 150 172 143
+Butterfree
+2 Bug Flying
+167 106 112 156 145 134
+Beedrill
+2 Bug Poison
+172 156 101 106 145 139
+Pidgeot
+2 Normal Flying
+190 145 139 134 134 168
+Pikachu
+1 Electric
+142 117 101 112 112 156
+Machamp
+1 Fight
+197 200 145 128 150 117
+Rapidash
+1 Fire
+172 167 134 145 145 172
+Snorlax
+1 Normal
+267 178 128 128 178 90
+Dragonite
+2 Dragon Flying
+198 204 161 167 167 145
+Mewtwo
+1 Psychic
+213 178 156 226 156 200
+Articuno
+2 Ice Flying
+197 150 167 161 194 150
+Tyranitar
+2 Rock Dark
+207 204 178 161 167 124
+Lugia
+2 Psychic Flying
+213 156 200 156 226 178
+Sceptile
+1 Grass
+177 150 128 172 150 189
+Arceus
+1 Normal
+227 189 189 189 189 189
+Meganium
+1 Grass
+187 147 167 148 167 145
+Greninja
+2 Water Dark
+179 161 130 170 135 191
+Rayquaza
+2 Dragon Flying
+212 222 156 222 156 161
+Eternatus
+2 Poison Dragon
+247 150 161 216 161 200

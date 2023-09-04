@@ -1,0 +1,33 @@
+[Turn 1] Venusaur used VineWhip!
+[Turn 1] It's super effective!
+[Turn 1] The opposing Blastoise used WaterGun!
+[Turn 1] It's not very effective...
+[Turn 2] Venusaur used PoisonPowder!
+[Turn 2] The opposing Blastoise was posined!
+[Turn 2] The opposing Blastoise used FlashCannon!
+[Turn 2] The opposing Blastoise is hurt by its poisoning!
+[Turn 3] You used a Potion!
+[Turn 3] Venusaur had its HP restored.
+[Turn 3] The opposing Blastoise used WaterPulse!
+[Turn 3] It's not very effective...
+[Turn 3] The opposing Blastoise is hurt by its poisoning!
+[Turn 4] Venusaur 142 Blastoise 106 PSN
+[Turn 4] PoisonPowder 34 VineWhip 24 SeedBomb 15 SolarBeam 10
+[Turn 4] Venusaur, switch out!
+[Turn 4] Come back!
+[Turn 4] Go!Blastoise!
+[Turn 4] The opposing Blastoise used FlashCannon!
+[Turn 4] It's not very effective...
+[Turn 4] The opposing Blastoise is hurt by its poisoning!
+[Turn 5] Blastoise 170 Blastoise 95 PSN
+[Turn 5] Blastoise, switch out!
+[Turn 5] Come back!
+[Turn 5] Go!Venusaur!
+[Turn 5] The opposing Blastoise used WaterGun!
+[Turn 5] It's not very effective...
+[Turn 5] The opposing Blastoise is hurt by its poisoning!
+[Turn 6] Venusaur used PoisonPowder!
+[Turn 6] The opposing Blastoise was posined!
+[Turn 6] The opposing Blastoise used AquaTail!
+[Turn 6] It's not very effective...
+[Turn 6] The opposing Blastoise is hurt by its poisoning!

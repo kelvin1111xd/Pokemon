@@ -1,0 +1,6 @@
+C:\Users\陳政元\Desktop\新增資料夾\Pokemon\Release\Pokemon.vcxproj.CopyComplete
+C:\Users\陳政元\Desktop\新增資料夾\Pokemon\Release\Pokemon.exe
+C:\Users\陳政元\Desktop\新增資料夾\Pokemon\Release\cpprest142_2_10.dll
+C:\Users\USER\Downloads\Group9_P3_ver2\project\Release\Pokemon.vcxproj.CopyComplete
+C:\Users\USER\Downloads\Group9_P3_ver2\project\Release\Pokemon.exe
+C:\Users\USER\Downloads\Group9_P3_ver2\project\Release\cpprest142_2_10.dll

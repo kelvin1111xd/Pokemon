@@ -1,0 +1,15 @@
+﻿  BattleManager.cpp
+C:\Users\USER\Downloads\Group9_P3_ver2\project\BattleManager.h(38,1): warning C4150: deletion of pointer to incomplete type 'Player'; no destructor called
+C:\Users\USER\Downloads\Group9_P3_ver2\project\BattleManager.h(18): message : see declaration of 'Player'
+C:\Users\USER\Downloads\Group9_P3_ver2\project\BattleManager.h(39,1): warning C4150: deletion of pointer to incomplete type 'Player'; no destructor called
+C:\Users\USER\Downloads\Group9_P3_ver2\project\BattleManager.h(18): message : see declaration of 'Player'
+C:\Users\USER\Downloads\Group9_P3_ver2\project\Player.h(28,1): warning C4150: deletion of pointer to incomplete type 'Pokemon'; no destructor called
+C:\Users\USER\Downloads\Group9_P3_ver2\project\Player.h(16): message : see declaration of 'Pokemon'
+C:\Users\USER\Downloads\Group9_P3_ver2\project\Pokemon.h(42,1): warning C4150: deletion of pointer to incomplete type 'Move'; no destructor called
+C:\Users\USER\Downloads\Group9_P3_ver2\project\Pokemon.h(15): message : see declaration of 'Move'
+  Generating code
+  3 of 4608 functions (<0.1%) were compiled, the rest were copied from previous compilation.
+    0 functions were new in current compilation
+    4 functions had inline decision re-evaluated but remain unchanged
+  Finished generating code
+  Pokemon.vcxproj -> C:\Users\USER\Downloads\Group9_P3_ver2\project\x64\Release\Pokemon.exe

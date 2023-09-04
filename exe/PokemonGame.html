@@ -1,0 +1,1886 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <link rel="icon" type="image/png" href="./image/Pokeball.png">
+    <title>Pokémon</title>
+    <!-- pokemon game css -->
+    <style>
+        html, body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-image: url('./image/background.png');
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+            overflow: hidden;
+        }
+
+        #settingsContainer {
+            display: none;
+            width: 600px;
+            height: 600px;
+            background-color: #ffffff;
+            border: 1px solid black;
+            padding: 10px;
+            z-index: 3;
+            position: absolute;
+            top: calc(50% - 300px);
+            left: calc(50% - 300px);
+            border-radius: 10px;
+        }
+
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        .modeLabel {
+            display: inline-block;
+            padding: 17px 30px;
+            border-radius: 50px;
+            font-size: 25px;
+            position: relative;
+            z-index: 1;
+            left: 40px;
+            border: 2px solid black;
+            background-image: linear-gradient(to bottom, #ff0000, #f763ff);
+        }
+
+        .settingComfirmButton {
+            position: relative;
+            width: 120px;
+            height: 35px;
+            top: calc(100% - 40px);
+            left: calc(100% - 125px);
+            background-color: #0079ff;
+            font-size: 20px;
+            color: #ffffff;
+            border-radius: 50px;
+        }
+
+        .settingCancelButton {
+            position: relative;
+            width: 120px;
+            height: 35px;
+            top: calc(100% - 40px);
+            left: calc(100% - 380px);
+            background-color: #ffffff;
+            font-size: 20px;
+            color: #0079ff;
+            border-radius: 50px;
+        }
+
+        .settingModeButton {
+            display: inline-block;
+            padding: 17px 30px;
+            border-radius: 50px;
+            font-size: 25px;
+            position: relative;
+            z-index: 1;
+            left: -40px;
+            border: 2px solid black;
+            background-image: linear-gradient(to bottom, #ff0000, #f763ff);
+        }
+
+        .startButton {
+            display: block;
+            padding: 16px 125px;
+            border-radius: 50px;
+            font-size: 25px;
+            position: absolute;
+            top: calc(50% + 50px);
+            left: calc(50% - 150px);
+            border: 2px solid black;
+            background: #ff0000;
+            background-image: linear-gradient(to bottom, #ff0000, #f763ff);
+        }
+
+        .fileTextBox {
+            position: relative;
+            width: 400px;
+            height: 35px;
+            top: 0%;
+            left: calc(0% + 20px);
+            background-color: #ccc;
+            font-size: 20px;
+            color: black;
+            border-radius: 50px;
+            opacity: 0.8;
+        }
+
+        .selectFileButton {
+            position: relative;
+            width: 100px;
+            height: 35px;
+            top: calc(0% - 50px);
+            left: calc(0% + 50px);
+            background-color: #0079ff;
+            font-size: 20px;
+            color: #ffffff;
+            border-radius: 50px;
+        }
+
+        .attackButton {
+            width: 100px;
+            height: 100px;
+            background-color: #eaeaea;
+            position: absolute;
+            top: calc(100% - 210px);
+            left: calc(100% - 300px);
+            transform: rotate(45deg);
+            border-radius: 20px;
+            background: #72cdff;
+            background-image: linear-gradient(to bottom, #ff3f3f, #ffc4c4);
+            z-index: 2;
+        }
+
+            .attackButton .button-text {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%) rotate(-45deg);
+                font-size: 20px;
+                color: #000000;
+            }
+
+            .attackButton:active {
+                background: #ff3f3f;
+                background-image: linear-gradient(to bottom, #ff3f3f, #ff3f3f);
+            }
+
+        .swapButton {
+            width: 100px;
+            height: 100px;
+            background-color: #eaeaea;
+            position: absolute;
+            top: calc(100% - 290px);
+            left: calc(100% - 220px);
+            transform: rotate(45deg);
+            border-radius: 20px;
+            background: #72cdff;
+            background-image: linear-gradient(to bottom, #53c2ff, #ade2ff);
+            z-index: 2;
+        }
+
+            .swapButton .button-text {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%) rotate(-45deg);
+                font-size: 20px;
+                color: #000000;
+            }
+
+            .swapButton:active {
+                background: #72cdff;
+                background-image: linear-gradient(to bottom, #53c2ff, #53c2ff);
+            }
+
+        .bagButton {
+            width: 100px;
+            height: 100px;
+            background-color: #eaeaea;
+            position: absolute;
+            top: calc(100% - 210px);
+            left: calc(100% - 140px);
+            transform: rotate(45deg);
+            border-radius: 20px;
+            background: #72cdff;
+            background-image: linear-gradient(to bottom, #5fff53, #c1ffbc);
+            z-index: 2;
+        }
+
+            .bagButton .button-text {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%) rotate(-45deg);
+                font-size: 20px;
+                color: #000000;
+            }
+
+            .bagButton:active {
+                background: #5fff53;
+                background-image: linear-gradient(to bottom, #5fff53, #5fff53);
+            }
+
+        .quitButton {
+            width: 100px;
+            height: 100px;
+            background-color: #eaeaea;
+            position: absolute;
+            top: calc(100% - 130px);
+            left: calc(100% - 220px);
+            transform: rotate(45deg);
+            border-radius: 20px;
+            background: #72cdff;
+            background-image: linear-gradient(to bottom, #fff750, #fffcbe);
+            z-index: 2;
+        }
+
+            .quitButton .button-text {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%) rotate(-45deg);
+                font-size: 20px;
+                color: #000000;
+            }
+
+            .quitButton:active {
+                background: #fff750;
+                background-image: linear-gradient(to bottom, #fff750, #fff750);
+            }
+
+        .infoButton {
+            width: 80px;
+            height: 80px;
+            background-color: #eaeaea;
+            position: absolute;
+            top: calc(100% - 200px);
+            left: calc(100% - 210px);
+            transform: rotate(45deg);
+            border-radius: 20px;
+            background: #72cdff;
+            background-image: linear-gradient(to bottom, #cbcbcb, #ffffff);
+            z-index: 2;
+        }
+
+            .infoButton .button-text {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%) rotate(-45deg);
+                font-size: 20px;
+                color: #000000;
+            }
+
+            .infoButton:active {
+                background: #cbcbcb;
+                background-image: linear-gradient(to bottom, #cbcbcb, #cbcbcb);
+            }
+
+        .menu {
+            display: block;
+            height: 170px;
+            padding: 10px;
+            position: absolute;
+            top: calc(100% - 192px);
+            left: 0%;
+            z-index: 1;
+            opacity: 1;
+            background-color: transparent;
+            border: 0px;
+            overflow: auto;
+            width: 75%;
+        }
+
+        .swapMenuStyle {
+            width: 250px;
+            height: 150px;
+            background-color: #ffffff;
+            position: relative;
+            top: calc(100% - 170px);
+            border-radius: 10px;
+            z-index: 3;
+            margin: 15px;
+            opacity: 1;
+        }
+
+        .bagMenuStyle {
+            width: 100px;
+            height: 100px;
+            background-color: #ffffff;
+            position: relative;
+            top: calc(100% - 140px);
+            border-radius: 10px;
+            z-index: 3;
+            margin: 15px;
+            opacity: 1;
+        }
+
+        .moveMenuStyle {
+            width: 250px;
+            height: 150px;
+            background-color: #ffffff;
+            position: relative;
+            top: calc(100% - 170px);
+            border-radius: 20px;
+            z-index: 3;
+            margin: 15px;
+            opacity: 1;
+            padding: 1px;
+        }
+
+        h3 {
+            margin-top: 1px;
+            margin-bottom: 1px;
+        }
+
+        .moveRight {
+            margin-left: 25px;
+        }
+
+        .healthBar {
+            background-color: #5fff53;
+            width: 300px;
+        }
+
+        select {
+            appearance: none;
+            padding: 17px;
+            width: 150px;
+            font-size: 25px;
+            background-color: white;
+            color: black;
+            position: relative;
+            z-index: 2;
+            border: 2px solid black;
+        }
+
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #888;
+        }
+
+            ::-webkit-scrollbar-thumb:hover {
+                background: #555;
+            }
+
+        #character {
+            width: 64px;
+            height: 64px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            background-image: url('./image/player.png');
+            background-position: 0 0;
+            transform: scaleX(1);
+        }
+
+        .obstacle {
+            position: absolute;
+            top: 610px;
+            left: 1140px;
+            width: 370px;
+            height: 120px;
+            background-color: transparent;
+        }
+
+        .obstacle2 {
+            position: absolute;
+            top: 520px;
+            left: 1345px;
+            width: 150px;
+            height: 120px;
+            background-color: transparent;
+        }
+
+        .obstacle3 {
+            position: absolute;
+            top: 430px;
+            left: 1420px;
+            width: 100px;
+            height: 120px;
+            background-color: transparent;
+        }
+
+        .obstacle4 {
+            position: absolute;
+            top: 0px;
+            left: 580px;
+            width: 400px;
+            height: 160px;
+            background-color: transparent;
+        }
+
+        .obstacle5 {
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            width: 330px;
+            height: 1000px;
+            background-color: transparent;
+        }
+
+        .obstacle6 {
+            position: absolute;
+            top: 0px;
+            left: 1250px;
+            width: 330px;
+            height: 1000px;
+            background-color: transparent;
+        }
+
+        .obstacle7 {
+            position: absolute;
+            top: 0px;
+            left: 300px;
+            width: 1000px;
+            height: 100px;
+            background-color: transparent;
+        }
+
+        .obstacle8 {
+            position: absolute;
+            top: 80px;
+            left: 730px;
+            width: 170px;
+            height: 90px;
+            background-color: transparent;
+        }
+
+        .obstacle9 {
+            position: absolute;
+            top: 92%;
+            left: 800px;
+            width: 40px;
+            height: 80px;
+            background-color: transparent;
+        }
+
+        .grass {
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            width: 325px;
+            height: 1000px;
+            background-color: transparent;
+        }
+
+        .grass2 {
+            position: absolute;
+            top: 110px;
+            left: 340px;
+            width: 150px;
+            height: 800px;
+            background-color: transparent;
+        }
+
+        .grass3 {
+            position: absolute;
+            top: 360px;
+            left: 500px;
+            width: 110px;
+            height: 400px;
+            background-color: transparent;
+        }
+
+        .grass4 {
+            position: absolute;
+            top: 310px;
+            left: 960px;
+            width: 320px;
+            height: 240px;
+            background-color: transparent;
+            v
+        }
+
+        .grass5 {
+            position: absolute;
+            top: 260px;
+            left: 1180px;
+            width: 180px;
+            height: 180px;
+            background-color: transparent;
+        }
+
+        .grass6 {
+            position: absolute;
+            top: 0px;
+            left: 1280px;
+            width: 400px;
+            height: 380px;
+            background-color: transparent;
+        }
+    </style>
+</head>
+
+<body>
+    <!--  Setting Menu  -->
+    <div id="settingsContainer">
+        <button class="settingComfirmButton" id="confirm">Confirm</button>
+        <button class="settingCancelButton" id="cancel">Cancel</button>
+        <h2 class="moveRight">Test Case FileName</h2>
+        <div>
+            <input type="file" id="testCase_filePath_button" style="display: none;">
+            <input type="text" class="fileTextBox" id="testCase_filePath" placeholder=" test case file path" value="">
+            <button onclick="selectTestCaseFile()" class="selectFileButton">...</button>
+        </div>
+        <h2 class="moveRight">Pokémon FileName</h2>
+        <div>
+            <input type="file" id="pokemon_filePath_button" style="display: none;">
+            <input type="text" class="fileTextBox" id="pokemon_filePath" placeholder=" pokémon file path" value="./data/PokemonLib.txt">
+            <button onclick="selectPokemonFile()" class="selectFileButton">...</button>
+        </div>
+        <h2 class="moveRight">Move FileName</h2>
+        <div>
+            <input type="file" id="move_filePath_button" style="display: none;">
+            <input type="text" class="fileTextBox" id="move_filePath" placeholder=" move file path" value="./data/MoveLib.txt">
+            <button onclick="selectMoveFile()" class="selectFileButton">...</button>
+        </div>
+        <h2 class="moveRight">Game Data FileName</h2>
+        <div>
+            <input type="file" id="game_filePath_button" style="display: none;">
+            <input type="text" class="fileTextBox" id="game_filePath" placeholder=" game file path" value="./data/GameData.txt">
+            <button onclick="selectGameFile()" class="selectFileButton">...</button>
+        </div>
+
+    </div>
+
+    <!--  Main Menu  -->
+    <div class="container" id="mainMenu">
+        <div>
+            <img src="./image/pokemonTitle.png">
+            <br></br>
+            <br></br>
+            <form>
+                <label for="dropdown" class="modeLabel">Mode&nbsp;&nbsp;</label>
+                <select id="dropdown" name="dropdown">
+                    <option value="option1">Battle</option>
+                    <option value="option2">RPG</option>
+                </select>
+                <button type="button" id="settingButton" class="settingModeButton">&nbsp;&nbsp;...</button>
+                <br></br>
+                <button type="button" id="startButton" class="startButton">Start</button>
+            </form>
+        </div>
+    </div>
+
+    <div style="position:absolute; top: 90%;"> <audio id="gameBGM" src="./music/BGM.mp3" controls loop></audio> </div>
+
+    <!--  Battle Menu  -->
+    <div id="battleMenu" style="display: none;">
+        <div style="position:absolute; top: 0%; left: 0%"><audio id="battleBGM" src="./music/battle.mp3" controls loop></audio> </div>
+
+        <button class="attackButton" id="attackButton">
+            <span class="button-text"><b>Attack</b></span>
+        </button>
+        <button class="swapButton" id="swapButton">
+            <span class="button-text"><b>Swap</b></span>
+        </button>
+        <button class="bagButton" id="bagButton">
+            <span class="button-text"><b>Bag</b></span>
+        </button>
+        <button class="quitButton" id="quitButton">
+            <span class="button-text"><b>Quit</b></span>
+        </button>
+        <button class="infoButton" id="infoButton">
+            <span class="button-text"><b>Info</b></span>
+        </button>
+
+        <!--  self Pokemon  -->
+        <div style="position:absolute; width: 600px; height: 600px; left: 10%; top:10%;">
+            <img src="./image/Charizard.png" width="400" height="400" id="sPokemonImage" style="position: absolute; left: 15%; top: 22%;">
+            <img src="./image/Fire.png" width="30" height="30" id="sPokemonType2" style="position: absolute; left: 29%; top: 16%;">
+            <img src="./image/Flying.png" width="30" height="30" id="sPokemonType1" style="position: absolute; left: 23%; top: 16%;">
+            <h2 style="position: absolute; left: 38%; top: 13%;" id="sPokemonName">Charizard</h2>
+            <h3 style="position: absolute; left: 60%; top: 17%;" id="sPokemonLevel">LV.50</h3>
+            <progress class="healthBar" value="100" max="100" id="sPokemonHpBar" style="position: absolute; left: 22%; top: 22%;"></progress>
+            <img src="./image/PAR.png" width="50" height="20" id="sEffect1" style="position: absolute; left: 22%; top: 26%; display: none;">
+            <img src="./image/BRN.png" width="50" height="20" id="sEffect2" style="position: absolute; left: 30%; top: 26%; display: none;">
+            <img src="./image/PSN.png" width="50" height="20" id="sEffect3" style="position: absolute; left: 38%; top: 26%; display: none;">
+        </div>
+
+        <!--  enemy Pokemon  -->
+        <div style="position:absolute; width: 500px; height: 500px; left: 58%; top:-5%;">
+            <img src="./image/Blastoise.png" width="300" height="300" id="ePokemonImage" style="position: absolute; left: 15%; top: 22%;">
+            <img src="./image/Water.png" width="30" height="30" id="ePokemonType2" style="position: absolute; left: 29%; top: 15%;">
+            <img src="./image/Flying.png" width="30" height="30" id="ePokemonType1" style="position: absolute; left: 23%; top: 15%;">
+            <h2 style="position: absolute; left: 42%; top: 12%;" id="ePokemonName">Blastoise</h2>
+            <h3 style="position: absolute; left: 65%; top: 17%;" id="ePokemonLevel">LV.50</h3>
+            <progress class="healthBar" value="50" max="100" id="ePokemonHpBar" style="position: absolute; left: 22%; top: 22%;"></progress>
+            <img src="./image/PAR.png" width="45" height="18" id="eEffect1" style="position: absolute; left: 22%; top: 26%; display: none;">
+            <img src="./image/BRN.png" width="45" height="18" id="eEffect2" style="position: absolute; left: 31%; top: 26%; display: none;">
+            <img src="./image/PSN.png" width="45" height="18" id="eEffect3" style="position: absolute; left: 40%; top: 26%; display: none;">
+        </div>
+
+        <!--  operation Menu  -->
+        <div class="menu" style="opacity: 0.7; background-color: #626262; border: 1px solid black; overflow: hidden; width: 98.6%; "></div>
+        <div id="pokemonMoveMenus">
+        </div>
+
+        <div id="swapMenu" class="menu">
+        </div>
+
+        <div id="bagMenu" class="menu">
+            <button class="bagMenuStyle" style="background-color: transparent;" id="Potion">
+                <img src="./image/Potion.png" width="80" height="80">
+            </button>
+
+            <button class="bagMenuStyle" style="background-color: transparent;" id="Super Potion">
+                <img src="./image/SuperPotion.png" width="80" height="80">
+            </button>
+
+            <button class="bagMenuStyle" style="background-color: transparent;" id="Hyper Potion">
+                <img src="./image/HyperPotion.png" width="80" height="80">
+            </button>
+
+            <button class="bagMenuStyle" style="background-color: transparent;" id="Max Potion">
+                <img src="./image/MaxPotion.png" width="80" height="80">
+            </button>
+        </div>
+
+        <div id="infoMenu" class="menu" style="font-size:20px;">
+        </div>
+    </div>
+
+    <!--  RPG Screen  -->
+    <div id="rpgScreen" style="display: none;">
+        <div id="character"></div>
+        <!--outside-->
+        <div id="outside" style="display: block;">
+            <div class="obstacle" id="obstacle"></div>
+            <div class="obstacle2" id="obstacle2"></div>
+            <div class="obstacle3" id="obstacle3"></div>
+            <div class="obstacle4" id="treeHouse"></div>
+
+            <div class="grass" id="grass"></div>
+            <div class="grass2" id="grass2"></div>
+            <div class="grass3" id="grass3"></div>
+            <div class="grass4" id="grass4"></div>
+            <div class="grass5" id="grass5"></div>
+            <div class="grass6" id="grass6"></div>
+        </div>
+
+        <!--inside-->
+        <div id="inside" style="display: none;">
+            <div class="obstacle5" id="obstacle5"></div>
+            <div class="obstacle6" id="obstacle6"></div>
+            <div class="obstacle7" id="obstacle7"></div>
+            <div class="obstacle8" id="counter"></div>
+            <div class="obstacle9" id="door"></div>
+        </div>
+
+    </div>
+
+    <!-- Battle Script -->
+    <script>
+        var settingsContainer = document.getElementById("settingsContainer");
+        var moveNum = 0;
+        var pokemonNum = 0;
+        var nowPokemonMoveMenu;
+        var moveData;
+        var sCurrentPokemon = 0;
+
+        // setting button click event
+        document.getElementById("settingButton").addEventListener("click", function (event) {
+            event.preventDefault();
+
+            switch (document.getElementById("dropdown").value) {
+                case "option1": // mode is battle
+                    settingsContainer.style.display = "block";
+                    break;
+                case "option2": // mode is RPG
+                   
+                    break;
+            }
+        });
+
+        // start button click event
+        document.getElementById("startButton").addEventListener("click", function (event) {
+            event.preventDefault();
+
+            switch (document.getElementById("dropdown").value) {
+                case "option1": // mode is battle
+                    document.getElementById("battleBGM").play();
+                    document.getElementById("battleBGM").currentTime = 0;
+                    document.getElementById("battleBGM").style.display = "block";
+                    document.getElementById("gameBGM").pause();
+                    document.getElementById("gameBGM").style.display = "none";
+                    var testCase = 'testCase=' + encodeURIComponent(document.getElementById("testCase_filePath").value);
+                    var pokemon = 'pokemon=' + encodeURIComponent(document.getElementById("pokemon_filePath").value);
+                    var move = 'move=' + encodeURIComponent(document.getElementById("move_filePath").value);
+                    var gameData = 'gameData=' + encodeURIComponent(document.getElementById("game_filePath").value);
+
+                    // reset game
+                    document.getElementById("mainMenu").style.display = "none";
+                    document.getElementById("battleMenu").style.display = "block";
+                    document.getElementById("swapMenu").style.display = "none";
+                    document.getElementById("bagMenu").style.display = "none";
+                    document.getElementById("infoMenu").style.display = "none";
+                    document.getElementById("eEffect1").style.display = "none";
+                    document.getElementById("eEffect2").style.display = "none";
+                    document.getElementById("eEffect3").style.display = "none";
+                    document.getElementById("sEffect1").style.display = "none";
+                    document.getElementById("sEffect2").style.display = "none";
+                    document.getElementById("sEffect3").style.display = "none";
+                    document.getElementById("infoMenu").innerText = "";
+                    document.getElementById("attackButton").disabled = false;
+                    document.getElementById("swapButton").disabled = false;
+                    document.getElementById("infoButton").disabled = false;
+                    document.getElementById("bagButton").disabled = false;
+
+                    console.log('http://localhost:8080?' + "readFile=&" + testCase + "&" + pokemon + "&" + move + "&" + gameData);
+
+                    // write data to URL
+                    fetch('http://localhost:8080?' + "readFile=&" + testCase + "&" + pokemon + "&" + move + "&" + gameData, {
+                        method: 'GET',
+                    })
+                        .then(response => response.json())
+                        .then(data => { // get response from website database josn
+                            sCurrentPokemon = data[0].sCurrentPokemon;
+
+                            var inputPokemonNum = data[0].PokemonNum;
+
+                            for (var i = 1; i <= inputPokemonNum; i++) {
+
+                                var index = 0;
+                                let effect = new Array();
+
+                                if (data[i][0].sPAR === true) {
+                                    effect[index] = "PAR"
+                                    index++;
+                                }
+
+                                if (data[i][0].ePSN === true) {
+                                    effect[index] = "PSN"
+                                    index++;
+                                }
+
+                                if (data[i][0].eBRN === true) {
+                                    effect[index] = "BRN"
+                                    index++;
+                                }
+
+                                createPokemonButton(data[i][0].Name, "50", data[i][0].CurrentHp, data[i][0].MaxHp, data[i][0].Atk, data[i][0].Def, data[i][0].SpAtk, data[i][0].SpDef, data[i][0].Speed, data[i][0].Type1, data[i][0].Type2, effect[0], effect[1], effect[2]);
+
+                                for (var j = 1; j <= data[i][0].MoveNum; j++) {
+                                    createMoveButton("pokemonMoveMenu" + pokemonNum, data[i][j].MoveName, data[i][j].MoveType, data[i][j].MoveCategory, data[i][j].MovePower, data[i][j].MoveAccuracy, data[i][j].MoveCurrentPP, data[i][j].MoveMaxPP, data[i][j].MoveEffect);
+                                }
+                            }
+
+                            if (data[0].Info != "" && data[0].Info != null) showText(data[0].Info); // show game massage
+
+                            // set oponent current pokemon
+                            document.getElementById("ePokemonImage").src = "./image/" + data[inputPokemonNum + 1][0].Name + "_front.png";
+                            document.getElementById("ePokemonHpBar").max = data[inputPokemonNum + 1][0].MaxHp;
+                            document.getElementById("ePokemonHpBar").value = data[inputPokemonNum + 1][0].CurrentHp;
+                            document.getElementById("ePokemonName").innerText = data[inputPokemonNum + 1][0].Name;
+                            document.getElementById("ePokemonLevel").innerText = "LV.50";
+                            document.getElementById("ePokemonType1").src = "./image/" + data[inputPokemonNum + 1][0].Type1 + ".png";
+
+                            if (data[inputPokemonNum + 1][0].Type2 != null) {
+                                document.getElementById("ePokemonType2").style.display = "block";
+                                document.getElementById("ePokemonType2").src = "./image/" + data[inputPokemonNum + 1][0].Type2 + ".png";
+                            }
+                            else document.getElementById("ePokemonType2").style.display = "none";
+
+                            var index = 0;
+
+                            if (data[inputPokemonNum + 1][0].ePAR === true) {
+                                document.getElementById("eEffect" + (index + 1)).src = "./image/PAR.png";
+                                document.getElementById("eEffect" + (index + 1)).style.display = "block";
+                                index++;
+                            }
+
+                            if (data[inputPokemonNum + 1][0].ePSN === true) {
+                                document.getElementById("eEffect" + (index + 1)).src = "./image/PSN.png";
+                                document.getElementById("eEffect" + (index + 1)).style.display = "block";
+                                index++;
+                            }
+
+                            if (data[inputPokemonNum + 1][0].eBRN === true) {
+                                document.getElementById("eEffect" + (index + 1)).src = "./image/BRN.png";
+                                document.getElementById("eEffect" + (index + 1)).style.display = "block";
+                                index++;
+                            }
+
+                            if (data[0].GameState === "eWin" || data[0].GameState === "sWin") {
+                                document.getElementById("swapMenu").style.display = "none";
+                                document.getElementById("bagMenu").style.display = "none";
+                                document.getElementById("infoMenu").style.display = "block";
+                                for (var i = 0; i < document.getElementById("swapMenu").getElementsByTagName("button").length; i++) {
+                                    if (document.getElementById("swapMenu").getElementsByTagName("button")[i].id == nowPokemonMoveMenu) {
+                                        document.getElementById("swapMenu").getElementsByTagName("button")[i].disabled = true;
+                                    }
+                                }
+                                document.getElementById("attackButton").disabled = true;
+                                document.getElementById("bagButton").disabled = true;
+                                document.getElementById("swapButton").disabled = true;
+                            }
+
+                            if (document.getElementById("sPokemonHpBar").value <= 0) switchPokemon();
+                        });
+                    break;
+                case "option2": // mode is RPG
+                    document.body.style.backgroundImage = 'url(./image/RPGbackground.png)';
+                    document.getElementById("mainMenu").style.display = "none";
+                    document.getElementById("rpgScreen").style.display = "block";
+                    document.getElementById("outside").style.display = "block";
+                    break;
+            }
+        });
+
+        // files name
+        var testCaseFilePath = "";
+        var pokemonFilePath = "./data/PokemonLib.txt";
+        var moveFilePath = "./data/MoveLib.txt";
+        var gameDataFilePath = "./data/GameData.txt";
+
+        // confirm button click event
+        document.getElementById("confirm").addEventListener("click", function (event) {
+            event.preventDefault();
+            settingsContainer.style.display = "none";
+            testCaseFilePath = document.getElementById("testCase_filePath").value;
+            pokemonFilePath = document.getElementById("pokemon_filePath").value;
+            moveFilePath = document.getElementById("move_filePath").value;
+            gameDataFilePath = document.getElementById("game_filePath").value;
+        });
+
+        // cancel button click event
+        document.getElementById("cancel").addEventListener("click", function (event) {
+            event.preventDefault();
+            settingsContainer.style.display = "none";
+            document.getElementById("testCase_filePath").value = testCaseFilePath;
+            document.getElementById("pokemon_filePath").value = pokemonFilePath;
+            document.getElementById("move_filePath").value = moveFilePath;
+            document.getElementById("game_filePath").value = gameDataFilePath;
+        });
+
+        function selectTestCaseFile() {
+            var fileInput = document.getElementById("testCase_filePath_button");
+            fileInput.click();
+        }
+
+        // choose test case file
+        document.getElementById("testCase_filePath_button").addEventListener("change", function () {
+            var file = this.files[0];
+
+            if (file) {
+                var fileName = file.name;
+                var filePathInput = document.getElementById("testCase_filePath");
+                filePathInput.value = "./data/" + fileName;
+                readLinesFromFile(file);
+            }
+        });
+
+        function readLinesFromFile(file) {
+            var reader = new FileReader();
+
+            reader.onload = function (e) {
+                var content = e.target.result;
+                var lines = content.split('\n');
+
+                var line1 = lines[0].trim();
+                var line2 = lines[1].trim();
+                var line3 = lines[2].trim();
+
+                if (line1.includes(".txt")) document.getElementById("pokemon_filePath").value = "./data/" + line1;
+                if (line2.includes(".txt")) document.getElementById("move_filePath").value = "./data/" + line2;
+                if (line3.includes(".txt")) document.getElementById("game_filePath").value = "./data/" + line3;
+            };
+            reader.readAsText(file);
+        }
+
+        // choose pokemon file
+        function selectPokemonFile() {
+            var fileInput = document.getElementById("pokemon_filePath_button");
+            fileInput.click();
+        }
+
+        document.getElementById("pokemon_filePath_button").addEventListener("change", function () {
+            var file = this.files[0];
+
+            if (file) {
+                var fileName = file.name;
+                var filePathInput = document.getElementById("pokemon_filePath");
+                filePathInput.value = "./data/" + fileName;
+            }
+        });
+
+        // choose move file
+        function selectMoveFile() {
+            var fileInput = document.getElementById("move_filePath_button");
+            fileInput.click();
+        }
+
+        document.getElementById("move_filePath_button").addEventListener("change", function () {
+            var file = this.files[0];
+
+            if (file) {
+                var fileName = file.name;
+                var filePathInput = document.getElementById("move_filePath");
+                filePathInput.value = "./data/" + fileName;
+            }
+        });
+
+        // choose game data file
+        function selectGameCaseFile() {
+            var fileInput = document.getElementById("game_filePath_button");
+            fileInput.click();
+        }
+
+        document.getElementById("game_filePath_button").addEventListener("change", function () {
+            var file = this.files[0];
+
+            if (file) {
+                var fileName = file.name;
+                var filePathInput = document.getElementById("game_filePath");
+                filePathInput.value = "./data/" + fileName;
+            }
+        });
+
+        // attack button click event
+        document.getElementById("attackButton").addEventListener("click", function () {
+            for (var i = 0; i < document.getElementById("pokemonMoveMenus").getElementsByTagName("div").length; i++) {
+                if (document.getElementById("pokemonMoveMenus").getElementsByTagName("div")[i].id === nowPokemonMoveMenu) {
+                    document.getElementById("pokemonMoveMenus").getElementsByTagName("div")[i].style.display = "block";
+                }
+            }
+            document.getElementById("swapMenu").style.display = "none";
+            document.getElementById("bagMenu").style.display = "none";
+            document.getElementById("infoMenu").style.display = "none";
+            document.getElementById("infoMenu").scrollTop = document.getElementById("infoMenu").scrollHeight;
+        });
+
+        // swap button click event
+        document.getElementById("swapButton").addEventListener("click", function () {
+            for (var i = 0; i < document.getElementById("pokemonMoveMenus").getElementsByTagName("div").length; i++) {
+                document.getElementById("pokemonMoveMenus").getElementsByTagName("div")[i].style.display = "none";
+            }
+            document.getElementById("swapMenu").style.display = "block";
+            document.getElementById("bagMenu").style.display = "none";
+            document.getElementById("infoMenu").style.display = "none";
+            document.getElementById("infoMenu").scrollTop = document.getElementById("infoMenu").scrollHeight;
+        });
+
+        // bag button click event
+        document.getElementById("bagButton").addEventListener("click", function () {
+            for (var i = 0; i < document.getElementById("pokemonMoveMenus").getElementsByTagName("div").length; i++) {
+                document.getElementById("pokemonMoveMenus").getElementsByTagName("div")[i].style.display = "none";
+            }
+            document.getElementById("swapMenu").style.display = "none";
+            document.getElementById("bagMenu").style.display = "block";
+            document.getElementById("infoMenu").style.display = "none";
+            document.getElementById("infoMenu").scrollTop = document.getElementById("infoMenu").scrollHeight;
+        });
+
+        // quit button click event
+        document.getElementById("quitButton").addEventListener("click", function () {
+            document.getElementById("battleBGM").pause();
+            document.getElementById("battleBGM").style.display = "none";
+            document.getElementById("gameBGM").play();
+            document.getElementById("gameBGM").style.display = "block";
+            document.getElementById("mainMenu").style.display = "block";
+            document.getElementById("battleMenu").style.display = "none";
+            pokemonNum = 0;
+            nowPokemonMoveMenu = null;
+
+            while (document.getElementById("swapMenu").firstChild) {
+                document.getElementById("swapMenu").removeChild(document.getElementById("swapMenu").firstChild);
+            }
+
+            while (document.getElementById("pokemonMoveMenus").firstChild) {
+                document.getElementById("pokemonMoveMenus").removeChild(document.getElementById("pokemonMoveMenus").firstChild);
+            }
+
+        });
+
+        // info button click event
+        document.getElementById("infoButton").addEventListener("click", function () {
+
+            for (var i = 0; i < document.getElementById("pokemonMoveMenus").getElementsByTagName("div").length; i++) {
+                document.getElementById("pokemonMoveMenus").getElementsByTagName("div")[i].style.display = "none";
+            }
+
+            document.getElementById("swapMenu").style.display = "none";
+            document.getElementById("bagMenu").style.display = "none";
+            document.getElementById("infoMenu").style.display = "block";
+            document.getElementById("infoMenu").scrollTop = document.getElementById("infoMenu").scrollHeight;
+        });
+
+        // print text to infoMenu
+        function showText(text) {
+            var displayContainer = document.getElementById("infoMenu");
+            var newLine = document.createElement("div");
+            newLine.innerText = text;
+            displayContainer.appendChild(newLine);
+            displayContainer.scrollTop = displayContainer.scrollHeight;
+        }
+
+        document.getElementById("Potion").addEventListener("click", function () {
+            document.getElementById("swapMenu").style.display = "none";
+            document.getElementById("bagMenu").style.display = "none";
+            document.getElementById("infoMenu").style.display = "block";
+            usePotion("Potion");
+        });
+
+        document.getElementById("Super Potion").addEventListener("click", function () {
+            document.getElementById("moveMenu").style.display = "none";
+            document.getElementById("swapMenu").style.display = "none";
+            document.getElementById("bagMenu").style.display = "none";
+            document.getElementById("infoMenu").style.display = "block";
+            usePotion("Super Potion");
+        });
+
+        document.getElementById("Hyper Potion").addEventListener("click", function () {
+            document.getElementById("swapMenu").style.display = "none";
+            document.getElementById("bagMenu").style.display = "none";
+            document.getElementById("infoMenu").style.display = "block";
+            usePotion("Hyper Potion");
+        });
+
+        document.getElementById("Max Potion").addEventListener("click", function () {
+            document.getElementById("swapMenu").style.display = "none";
+            document.getElementById("bagMenu").style.display = "none";
+            document.getElementById("infoMenu").style.display = "block";
+            usePotion("Max Potion");
+        });
+
+        // used potion event
+        function usePotion(potionName) {
+            console.log('http://localhost:8080?' + "potion=" + potionName);
+            fetch('http://localhost:8080?' + "potion=" + potionName, {
+                method: 'GET',
+            })
+                .then(response => response.json())
+                .then(data => {
+                    decreaseHpAnimation(document.getElementById("sPokemonHpBar"), data.sHp, function () {
+                        decreaseHpAnimation(document.getElementById("ePokemonHpBar"), data.eHp, function () {
+                            document.getElementById("sPokemonHpBar").value = data.sHp;
+                            document.getElementById("ePokemonHpBar").value = data.eHp;
+
+                            for (var i = 0; i < document.getElementById("swapMenu").getElementsByTagName("button").length; i++) {
+                                if (document.getElementById("swapMenu").getElementsByTagName("button")[i].id == nowPokemonMoveMenu) {
+                                    document.getElementById("swapMenu").getElementsByTagName("button")[i].getElementsByTagName("progress")[0].value = data.sHp;
+
+                                    for (var j = 0; j < document.getElementById("swapMenu").getElementsByTagName("button")[i].getElementsByTagName("h3").length; j++) {
+                                        var hpText = document.getElementById("swapMenu").getElementsByTagName("button")[i].getElementsByTagName("h3")[j];
+
+                                        if (hpText.innerText[0] === "H" && hpText.innerText[1] === "p")
+                                            document.getElementById("swapMenu").getElementsByTagName("button")[i].getElementsByTagName("h3")[j].innerText = "Hp " + data.sHp + "/" + hpText.id;
+                                    }
+
+                                    document.getElementById("sEffect1").style.display = "none";
+                                    document.getElementById("sEffect2").style.display = "none";
+                                    document.getElementById("sEffect3").style.display = "none";
+                                    var spanIndex = 0;
+
+                                    if (data.sPAR === true) {
+                                        document.getElementById("swapMenu").getElementsByTagName("button")[i].getElementsByTagName("span")[spanIndex].style.backgroundColor = effectColor("PAR");
+                                        document.getElementById("sEffect" + (spanIndex + 1)).src = "./image/PAR.png";
+                                        document.getElementById("sEffect" + (spanIndex + 1)).style.display = "block";
+                                        spanIndex++;
+                                    }
+
+                                    if (data.sPSN === true) {
+                                        document.getElementById("swapMenu").getElementsByTagName("button")[i].getElementsByTagName("span")[spanIndex].style.backgroundColor = effectColor("PSN");
+                                        document.getElementById("sEffect" + (spanIndex + 1)).src = "./image/PSN.png";
+                                        document.getElementById("sEffect" + (spanIndex + 1)).style.display = "block";
+                                        spanIndex++;
+                                    }
+
+                                    if (data.sBRN === true) {
+                                        document.getElementById("swapMenu").getElementsByTagName("button")[i].getElementsByTagName("span")[spanIndex].style.backgroundColor = effectColor("BRN");
+                                        document.getElementById("sEffect" + (spanIndex + 1)).src = "./image/BRN.png";
+                                        document.getElementById("sEffect" + (spanIndex + 1)).style.display = "block";
+                                        spanIndex++;
+                                    }
+                                }
+                            }
+
+                            if (data.eState === "faited") {
+                                document.getElementById("ePokemonImage").src = "./image/" + data.Name + "_front.png";
+                                document.getElementById("ePokemonHpBar").max = data.Hp;
+                                document.getElementById("ePokemonHpBar").value = data.Hp;
+                                document.getElementById("ePokemonName").innerText = data.Name;
+                                document.getElementById("ePokemonLevel").innerText = "LV.50";
+                                document.getElementById("ePokemonType1").src = "./image/" + data.Type1 + ".png";
+
+                                if (data.Type2 != null) {
+                                    document.getElementById("ePokemonType2").style.display = "block";
+                                    document.getElementById("ePokemonType2").src = "./image/" + data.Type2 + ".png";
+                                }
+                                else document.getElementById("ePokemonType2").style.display = "none";
+
+                                document.getElementById("eEffect1").style.display = "none";
+                                document.getElementById("eEffect2").style.display = "none";
+                                document.getElementById("eEffect3").style.display = "none";
+                            }
+
+                            if (data.sState === "faited") switchPokemon();
+                        });
+                    });
+
+                    showText(data.Info);
+                });
+        }
+
+        // create move button
+        function createMoveButton(pokemonMoveMenu, moveName, type, category, power, accuracy, currentPp, maxPp, state) {
+
+            var button = document.createElement("button");
+            button.classList.add("moveMenuStyle");
+            var color = moveButtonColor(type);
+            button.style.backgroundImage = "linear-gradient(to bottom, " + color + ", " + color + ", #b8b8b8)";
+
+            var h2MoveName = document.createElement("h2");
+            h2MoveName.style.position = "relative";
+            h2MoveName.style.textAlign = "center";
+            h2MoveName.style.top = "-30%";
+            h2MoveName.innerText = moveName;
+
+            var h3Power = document.createElement("h3");
+            h3Power.style.position = "absolute";
+            h3Power.style.top = "40%";
+            h3Power.style.left = "10%";
+            h3Power.innerText = "Power: " + power;
+
+            var h3Type = document.createElement("h3");
+            h3Type.style.position = "absolute";
+            h3Type.style.top = "40%";
+            h3Type.style.left = "65%";
+            h3Type.innerText = category;
+
+            var h3Accuracy = document.createElement("h3");
+            h3Accuracy.style.position = "absolute";
+            h3Accuracy.style.top = "55%";
+            h3Accuracy.style.left = "10%";
+            h3Accuracy.innerText = "Accuracy: " + accuracy + "%";
+
+            var h3Category = document.createElement("h3");
+            h3Category.style.position = "absolute";
+            h3Category.style.top = "80%";
+            h3Category.style.left = "20%";
+            h3Category.innerText = type;
+
+            var currentPP = currentPp;
+            var h3PP = document.createElement("h3");
+            h3PP.style.position = "absolute";
+            h3PP.style.top = "80%";
+            h3PP.style.left = "75%";
+            h3PP.innerText = currentPp + "/" + maxPp;
+
+            var h4State = document.createElement("h4");
+            h4State.style.position = "absolute";
+            h4State.style.top = "2%";
+            h4State.style.left = "80%";
+            h4State.style.border = "2px solid white";
+            h4State.style.color = "white";
+            h4State.innerText = state;
+
+            var typeImage = document.createElement("img");
+            typeImage.src = "./image/" + type + ".png";
+            typeImage.width = 25;
+            typeImage.height = 25;
+            typeImage.style.position = "absolute";
+            typeImage.style.top = "78%";
+            typeImage.style.left = "9%";
+
+            button.appendChild(h2MoveName);
+            button.appendChild(h3Power);
+            button.appendChild(h3Type);
+            button.appendChild(h3Accuracy);
+            button.appendChild(h3Category);
+            button.appendChild(h3PP);
+            button.appendChild(typeImage);
+            if (state != null && state != "") button.appendChild(h4State);
+
+            if (currentPp <= 0) button.disabled = true;
+
+            // this button event
+            button.addEventListener("click", function () {
+                var seletPokemon = false;
+
+                console.log('http://localhost:8080?' + "move=" + moveName);
+                fetch('http://localhost:8080?' + "move=" + moveName, {
+                    method: 'GET',
+                })
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.IsSuccess === true) {
+                            currentPP--;
+                            h3PP.innerText = currentPP + "/" + maxPp;
+                            decreaseHpAnimation(document.getElementById("sPokemonHpBar"), data.sHp, function () {
+                                decreaseHpAnimation(document.getElementById("ePokemonHpBar"), data.eHp, function () {
+                                    document.getElementById("sPokemonHpBar").value = data.sHp;
+                                    document.getElementById("ePokemonHpBar").value = data.eHp;
+
+                                    for (var i = 0; i < document.getElementById("swapMenu").getElementsByTagName("button").length; i++) {
+                                        if (document.getElementById("swapMenu").getElementsByTagName("button")[i].id == nowPokemonMoveMenu) {
+                                            document.getElementById("swapMenu").getElementsByTagName("button")[i].getElementsByTagName("progress")[0].value = data.sHp;
+
+                                            for (var j = 0; j < document.getElementById("swapMenu").getElementsByTagName("button")[i].getElementsByTagName("h3").length; j++) {
+                                                var hpText = document.getElementById("swapMenu").getElementsByTagName("button")[i].getElementsByTagName("h3")[j];
+
+                                                if (hpText.innerText[0] === "H" && hpText.innerText[1] === "p")
+                                                    document.getElementById("swapMenu").getElementsByTagName("button")[i].getElementsByTagName("h3")[j].innerText = "Hp " + data.sHp + "/" + hpText.id;
+                                            }
+
+                                            document.getElementById("sEffect1").style.display = "none";
+                                            document.getElementById("sEffect2").style.display = "none";
+                                            document.getElementById("sEffect3").style.display = "none";
+                                            var spanIndex = 0;
+
+                                            if (data.sPAR === true) {
+                                                document.getElementById("swapMenu").getElementsByTagName("button")[i].getElementsByTagName("span")[spanIndex].style.backgroundColor = effectColor("PAR");
+                                                document.getElementById("sEffect" + (spanIndex + 1)).src = "./image/PAR.png";
+                                                document.getElementById("sEffect" + (spanIndex + 1)).style.display = "block";
+                                                spanIndex++;
+                                            }
+
+                                            if (data.sPSN === true) {
+                                                document.getElementById("swapMenu").getElementsByTagName("button")[i].getElementsByTagName("span")[spanIndex].style.backgroundColor = effectColor("PSN");
+                                                document.getElementById("sEffect" + (spanIndex + 1)).src = "./image/PSN.png";
+                                                document.getElementById("sEffect" + (spanIndex + 1)).style.display = "block";
+                                                spanIndex++;
+                                            }
+
+                                            if (data.sBRN === true) {
+                                                document.getElementById("swapMenu").getElementsByTagName("button")[i].getElementsByTagName("span")[spanIndex].style.backgroundColor = effectColor("BRN");
+                                                document.getElementById("sEffect" + (spanIndex + 1)).src = "./image/BRN.png";
+                                                document.getElementById("sEffect" + (spanIndex + 1)).style.display = "block";
+                                                spanIndex++;
+                                            }
+                                        }
+                                    }
+
+                                    var index = 0;
+
+                                    if (data.ePAR === true) {
+                                        document.getElementById("eEffect" + (index + 1)).src = "./image/PAR.png";
+                                        document.getElementById("eEffect" + (index + 1)).style.display = "block";
+                                        index++;
+                                    }
+
+                                    if (data.ePSN === true) {
+                                        document.getElementById("eEffect" + (index + 1)).src = "./image/PSN.png";
+                                        document.getElementById("eEffect" + (index + 1)).style.display = "block";
+                                        index++;
+                                    }
+
+                                    if (data.eBRN === true) {
+                                        document.getElementById("eEffect" + (index + 1)).src = "./image/BRN.png";
+                                        document.getElementById("eEffect" + (index + 1)).style.display = "block";
+                                        index++;
+                                    }
+
+                                    if (data.sState === "faited") {
+                                        seletPokemon = true;
+                                        switchPokemon();
+                                    }
+
+                                    if (data.eState === "faited") {
+                                        document.getElementById("ePokemonImage").src = "./image/" + data.Name + "_front.png";
+                                        document.getElementById("ePokemonHpBar").max = data.Hp;
+                                        document.getElementById("ePokemonHpBar").value = data.Hp;
+                                        document.getElementById("ePokemonName").innerText = data.Name;
+                                        document.getElementById("ePokemonLevel").innerText = "LV.50";
+                                        document.getElementById("ePokemonType1").src = "./image/" + data.Type1 + ".png";
+
+                                        if (data.Type2 != null) {
+                                            document.getElementById("ePokemonType2").style.display = "block";
+                                            document.getElementById("ePokemonType2").src = "./image/" + data.Type2 + ".png";
+                                        }
+                                        else document.getElementById("ePokemonType2").style.display = "none";
+
+                                        document.getElementById("eEffect1").style.display = "none";
+                                        document.getElementById("eEffect2").style.display = "none";
+                                        document.getElementById("eEffect3").style.display = "none";
+                                    }
+
+                                    if (data.GameState === "eWin" || data.GameState === "sWin") {
+                                        document.getElementById("swapMenu").style.display = "none";
+                                        document.getElementById("bagMenu").style.display = "none";
+                                        document.getElementById("infoMenu").style.display = "block";
+                                        for (var i = 0; i < document.getElementById("swapMenu").getElementsByTagName("button").length; i++) {
+                                            if (document.getElementById("swapMenu").getElementsByTagName("button")[i].id == nowPokemonMoveMenu) {
+                                                document.getElementById("swapMenu").getElementsByTagName("button")[i].disabled = true;
+                                            }
+                                        }
+                                        document.getElementById("attackButton").disabled = true;
+                                        document.getElementById("bagButton").disabled = true;
+                                        document.getElementById("swapButton").disabled = true;
+                                    }
+                                });
+                            });
+
+                        }
+
+                        showText(data.Info);
+
+                        if (!seletPokemon) {
+                            for (var i = 0; i < document.getElementById("pokemonMoveMenus").getElementsByTagName("div").length; i++) {
+                                document.getElementById("pokemonMoveMenus").getElementsByTagName("div")[i].style.display = "none";
+                            }
+                            document.getElementById("swapMenu").style.display = "none";
+                            document.getElementById("bagMenu").style.display = "none";
+                            document.getElementById("infoMenu").style.display = "block";
+                            document.getElementById("infoMenu").scrollTop = document.getElementById("infoMenu").scrollHeight;
+                        }
+
+                        if (currentPP <= 0) button.disabled = true;
+                    });
+            });
+
+            document.getElementById(pokemonMoveMenu).appendChild(button);
+        }
+
+        function decreaseHpAnimation(progressBar, targetValue, callback) {
+            var animationDuration = 1000;
+            var decreaseValuePerMs = 100 / animationDuration;
+
+            var currentValue = progressBar.value;
+            var startTime = null;
+
+            function animate(timestamp) {
+                if (!startTime) startTime = timestamp;
+                var elapsedTime = timestamp - startTime;
+                var progress = elapsedTime / animationDuration;
+
+                var newValue = currentValue - (decreaseValuePerMs * elapsedTime);
+                if (newValue < targetValue) newValue = targetValue;
+
+                progressBar.value = newValue.toFixed(1);
+
+                if (progress < 1) {
+                    requestAnimationFrame(animate);
+                } else {
+                    if (typeof callback === 'function') {
+                        callback();
+                    }
+                }
+            }
+
+            requestAnimationFrame(animate);
+        }
+
+        // create pokemon button
+        function createPokemonButton(pokemonName, level, currentHp, maxHp, atk, def, spAtk, spDef, speed, type1, type2, effect1, effect2, effect3) {
+
+            pokemonNum++;
+            var button = document.createElement("button");
+            button.classList.add("swapMenuStyle");
+            button.style.backgroundImage = "linear-gradient(to bottom, #ffc076, #ffc076, #b8b8b8)";
+            button.id = "pokemonMoveMenu" + pokemonNum;
+
+            var pokemonImage = document.createElement("img");
+            pokemonImage.src = "./image/" + pokemonName + "_front.png";
+            pokemonImage.onerror = function () {
+                pokemonImage.src = "./image/Unkown.png";
+            };
+            pokemonImage.width = 100;
+            pokemonImage.height = 100;
+            pokemonImage.style.position = "absolute";
+            pokemonImage.style.top = "5%";
+            pokemonImage.style.left = "5%";
+
+            var h2PokemonName = document.createElement("h2");
+            h2PokemonName.style.position = "absolute";
+            h2PokemonName.style.top = "0%";
+            h2PokemonName.style.left = "50%";
+            h2PokemonName.innerText = pokemonName;
+
+            var h3Level = document.createElement("h3");
+            h3Level.style.position = "absolute";
+            h3Level.style.top = "30%";
+            h3Level.style.left = "45%";
+            h3Level.innerText = "LV." + level;
+
+            var h3Hp = document.createElement("h3");
+            h3Hp.style.position = "absolute";
+            h3Hp.style.top = "42%";
+            h3Hp.style.left = "45%";
+            h3Hp.id = maxHp;
+            h3Hp.innerText = "Hp " + currentHp + "/" + maxHp;
+
+            var h3Data = document.createElement("h3");
+            h3Data.style.position = "absolute";
+            h3Data.style.top = "70%";
+            h3Data.style.left = "2%";
+            h3Data.innerText = "Atk " + atk + " / Def " + def + " / SpA " + spAtk + " / SpD " + spDef + " / Speed " + speed;
+
+            var hpProgress = document.createElement("progress");
+            hpProgress.max = maxHp;
+            hpProgress.value = currentHp;
+            hpProgress.style.width = "120px";
+            hpProgress.style.background = "#5fff53";
+            hpProgress.style.position = "absolute";
+            hpProgress.style.top = "56%";
+            hpProgress.style.left = "45%";
+            hpProgress.id = "hpBar";
+
+            var typeImage1 = document.createElement("img");
+            typeImage1.src = "./image/" + type1 + ".png";
+            typeImage1.width = 20;
+            typeImage1.height = 20;
+            typeImage1.style.position = "absolute";
+            typeImage1.style.top = "30%";
+            typeImage1.style.left = "86%";
+
+            var typeImage2 = document.createElement("img");
+            typeImage2.src = "./image/" + type2 + ".png";
+            typeImage2.width = 20;
+            typeImage2.height = 20;
+            typeImage2.style.position = "absolute";
+            typeImage2.style.top = "30%";
+            typeImage2.style.left = "78%";
+
+            var dot1 = document.createElement("span");
+            dot1.style.position = "absolute";
+            dot1.style.top = "10px";
+            dot1.style.left = "10px";
+            dot1.style.width = "20px";
+            dot1.style.height = "5px";
+            dot1.style.backgroundColor = effectColor(effect1);
+            dot1.style.borderRadius = "0%";
+            dot1.id = "effect1";
+
+            var dot2 = document.createElement("span");
+            dot2.style.position = "absolute";
+            dot2.style.top = "10px";
+            dot2.style.left = "30px";
+            dot2.style.width = "20px";
+            dot2.style.height = "5px";
+            dot2.style.backgroundColor = effectColor(effect2);
+            dot2.style.borderRadius = "0%";
+            dot2.id = "effect2";
+
+            var dot3 = document.createElement("span");
+            dot3.style.position = "absolute";
+            dot3.style.top = "10px";
+            dot3.style.left = "50px";
+            dot3.style.width = "20px";
+            dot3.style.height = "5px";
+            dot3.style.backgroundColor = effectColor(effect3);
+            dot3.style.borderRadius = "0%";
+            dot3.id = "effect3";
+
+            button.appendChild(pokemonImage);
+            button.appendChild(h2PokemonName);
+            button.appendChild(h3Hp);
+            button.appendChild(h3Level);
+            button.appendChild(hpProgress);
+            button.appendChild(h3Data);
+            button.appendChild(typeImage1);
+            button.appendChild(dot1);
+            button.appendChild(dot2);
+            button.appendChild(dot3);
+            if (type2 != null) button.appendChild(typeImage2);
+
+            if (currentHp <= 0) button.disabled = true;
+
+            document.getElementById("swapMenu").appendChild(button);
+
+            var divPokemonMenu = document.createElement("div");
+            divPokemonMenu.id = "pokemonMoveMenu" + pokemonNum;
+            divPokemonMenu.classList = "menu";
+
+            if (pokemonNum > 1) divPokemonMenu.style.display = "none";
+            else nowPokemonMoveMenu = divPokemonMenu.id;
+
+            document.getElementById("pokemonMoveMenus").appendChild(divPokemonMenu);;
+
+            // this button event
+            button.addEventListener("click", function () {
+                document.getElementById("sPokemonImage").src = "./image/" + h2PokemonName.innerText + "_back.png";
+                document.getElementById("sPokemonHpBar").max = hpProgress.max;
+                document.getElementById("sPokemonHpBar").value = hpProgress.value;
+                document.getElementById("sPokemonName").innerText = h2PokemonName.innerText;
+                document.getElementById("sPokemonLevel").innerText = h3Level.innerText;
+                document.getElementById("sPokemonType1").src = typeImage1.src;
+                document.getElementById("sEffect1").style.display = "none";
+                document.getElementById("sEffect2").style.display = "none";
+                document.getElementById("sEffect3").style.display = "none";
+
+                if (dot1.style.backgroundColor != "transparent") {
+                    document.getElementById("sEffect1").src = "./image/" + colorToEffect(dot1.style.backgroundColor) + ".png";
+                    document.getElementById("sEffect1").style.display = "block";
+                }
+
+                if (dot2.style.backgroundColor != "transparent") {
+                    document.getElementById("sEffect2").src = "./image/" + colorToEffect(dot2.style.backgroundColor) + ".png";
+                    document.getElementById("sEffect2").style.display = "block";
+                }
+
+                if (dot3.style.backgroundColor != "transparent") {
+                    document.getElementById("sEffect3").src = "./image/" + colorToEffect(dot3.style.backgroundColor) + ".png";
+                    document.getElementById("sEffect3").style.display = "block";
+                }
+
+                if (type2 != null) {
+                    document.getElementById("sPokemonType2").style.display = "block";
+                    document.getElementById("sPokemonType2").src = typeImage2.src;
+                }
+                else document.getElementById("sPokemonType2").style.display = "none";
+
+                var moveMenus = document.getElementById("pokemonMoveMenus").getElementsByTagName("div");
+
+                for (var i = 0; i < moveMenus.length; i++) moveMenus[i].style.display = "none";
+
+                document.getElementById("swapMenu").style.display = "none";
+                document.getElementById("infoMenu").style.display = "block";
+                nowPokemonMoveMenu = divPokemonMenu.id;
+                var sendText = "";
+
+                if (document.getElementById("attackButton").disabled === false)
+                    sendText = "swap=" + h2PokemonName.innerText;
+                else
+                    sendText = "faited=" + h2PokemonName.innerText;
+
+                console.log('http://localhost:8080?' + sendText);
+                fetch('http://localhost:8080?' + sendText, {
+                    method: 'GET',
+                })
+                    .then(response => response.json())
+                    .then(data => {
+                        decreaseHpAnimation(document.getElementById("sPokemonHpBar"), data.sHp, function () {
+                            decreaseHpAnimation(document.getElementById("ePokemonHpBar"), data.eHp, function () {
+                                document.getElementById("sPokemonHpBar").value = data.sHp;
+                                document.getElementById("ePokemonHpBar").value = data.eHp;
+
+                                for (var i = 0; i < document.getElementById("swapMenu").getElementsByTagName("button").length; i++) {
+                                    if (document.getElementById("swapMenu").getElementsByTagName("button")[i].id == nowPokemonMoveMenu) {
+                                        document.getElementById("swapMenu").getElementsByTagName("button")[i].getElementsByTagName("progress")[0].value = data.sHp;
+                                        for (var j = 0; j < document.getElementById("swapMenu").getElementsByTagName("button")[i].getElementsByTagName("h3").length; j++) {
+                                            var hpText = document.getElementById("swapMenu").getElementsByTagName("button")[i].getElementsByTagName("h3")[j];
+
+                                            if (hpText.innerText[0] === "H" && hpText.innerText[1] === "p")
+                                                document.getElementById("swapMenu").getElementsByTagName("button")[i].getElementsByTagName("h3")[j].innerText = "Hp " + data.sHp + "/" + hpText.id;
+                                        }
+
+                                        document.getElementById("sEffect1").style.display = "none";
+                                        document.getElementById("sEffect2").style.display = "none";
+                                        document.getElementById("sEffect3").style.display = "none";
+                                        var spanIndex = 0;
+
+                                        if (data.sPAR === true) {
+                                            document.getElementById("swapMenu").getElementsByTagName("button")[i].getElementsByTagName("span")[spanIndex].style.backgroundColor = effectColor("PAR");
+                                            document.getElementById("sEffect" + (spanIndex + 1)).src = "./image/PAR.png";
+                                            document.getElementById("sEffect" + (spanIndex + 1)).style.display = "block";
+                                            spanIndex++;
+                                        }
+
+                                        if (data.sPSN === true) {
+                                            document.getElementById("swapMenu").getElementsByTagName("button")[i].getElementsByTagName("span")[spanIndex].style.backgroundColor = effectColor("PSN");
+                                            document.getElementById("sEffect" + (spanIndex + 1)).src = "./image/PSN.png";
+                                            document.getElementById("sEffect" + (spanIndex + 1)).style.display = "block";
+                                            spanIndex++;
+                                        }
+
+                                        if (data.sBRN === true) {
+                                            document.getElementById("swapMenu").getElementsByTagName("button")[i].getElementsByTagName("span")[spanIndex].style.backgroundColor = effectColor("BRN");
+                                            document.getElementById("sEffect" + (spanIndex + 1)).src = "./image/BRN.png";
+                                            document.getElementById("sEffect" + (spanIndex + 1)).style.display = "block";
+                                            spanIndex++;
+                                        }
+                                    }
+                                }
+
+                                if (data.eState === "faited") {
+                                    document.getElementById("ePokemonImage").src = "./image/" + data.Name + "_front.png";
+                                    document.getElementById("ePokemonHpBar").max = data.Hp;
+                                    document.getElementById("ePokemonHpBar").value = data.Hp;
+                                    document.getElementById("ePokemonName").innerText = data.Name;
+                                    document.getElementById("ePokemonLevel").innerText = "LV.50";
+                                    document.getElementById("ePokemonType1").src = "./image/" + data.Type1 + ".png";
+
+                                    if (data.Type2 != null) {
+                                        document.getElementById("ePokemonType2").style.display = "block";
+                                        document.getElementById("ePokemonType2").src = "./image/" + data.Type2 + ".png";
+                                    }
+                                    else document.getElementById("ePokemonType2").style.display = "none";
+
+                                    document.getElementById("eEffect1").style.display = "none";
+                                    document.getElementById("eEffect2").style.display = "none";
+                                    document.getElementById("eEffect3").style.display = "none";
+                                }
+                            });
+                        });
+
+                        showText(data.Info);
+                        document.getElementById("attackButton").disabled = false;
+                        document.getElementById("swapButton").disabled = false;
+                        document.getElementById("infoButton").disabled = false;
+                        document.getElementById("bagButton").disabled = false;
+
+                        if (data.sState === "faited") switchPokemon();
+                    });
+
+            });
+
+            // set current pokemon
+            if (pokemonNum - 1 == sCurrentPokemon) {
+                document.getElementById("sPokemonImage").src = "./image/" + h2PokemonName.innerText + "_back.png";
+                document.getElementById("sPokemonHpBar").max = hpProgress.max;
+                document.getElementById("sPokemonHpBar").value = hpProgress.value;
+                document.getElementById("sPokemonName").innerText = h2PokemonName.innerText;
+                document.getElementById("sPokemonLevel").innerText = h3Level.innerText;
+                document.getElementById("sPokemonType1").src = typeImage1.src;
+                document.getElementById("sEffect1").style.display = "none";
+                document.getElementById("sEffect2").style.display = "none";
+                document.getElementById("sEffect3").style.display = "none";
+
+                if (dot1.style.backgroundColor != "transparent") {
+                    document.getElementById("sEffect1").src = "./image/" + colorToEffect(dot1.style.backgroundColor) + ".png";
+                    document.getElementById("sEffect1").style.display = "block";
+                }
+
+                if (dot2.style.backgroundColor != "transparent") {
+                    document.getElementById("sEffect2").src = "./image/" + colorToEffect(dot2.style.backgroundColor) + ".png";
+                    document.getElementById("sEffect2").style.display = "block";
+                }
+
+                if (dot3.style.backgroundColor != "transparent") {
+                    document.getElementById("sEffect3").src = "./image/" + colorToEffect(dot3.style.backgroundColor) + ".png";
+                    document.getElementById("sEffect3").style.display = "block";
+                }
+
+                if (type2 != null) {
+                    document.getElementById("sPokemonType2").style.display = "block";
+                    document.getElementById("sPokemonType2").src = typeImage2.src;
+                }
+                else document.getElementById("sPokemonType2").style.display = "none";
+
+                var moveMenus = document.getElementById("pokemonMoveMenus").getElementsByTagName("div");
+
+                for (var i = 0; i < moveMenus.length; i++) moveMenus[i].style.display = "none";
+
+                document.getElementById("swapMenu").style.display = "none";
+                document.getElementById("infoMenu").style.display = "block";
+                nowPokemonMoveMenu = divPokemonMenu.id;
+            }
+        }
+
+        function switchPokemon() {
+            for (var i = 0; i < document.getElementById("pokemonMoveMenus").getElementsByTagName("div").length; i++) {
+                document.getElementById("pokemonMoveMenus").getElementsByTagName("div")[i].style.display = "none";
+            }
+            document.getElementById("swapMenu").style.display = "block";
+            document.getElementById("bagMenu").style.display = "none";
+            document.getElementById("infoMenu").style.display = "none";
+            for (var i = 0; i < document.getElementById("swapMenu").getElementsByTagName("button").length; i++) {
+                if (document.getElementById("swapMenu").getElementsByTagName("button")[i].id == nowPokemonMoveMenu) {
+                    document.getElementById("swapMenu").getElementsByTagName("button")[i].disabled = true;
+                }
+            }
+            document.getElementById("attackButton").disabled = true;
+            document.getElementById("bagButton").disabled = true;
+        }
+
+        function moveButtonColor(type) {
+            switch (type) {
+                case "Normal": return "#ffcca0";
+                case "Fire": return "#ff3f3f";
+                case "Water": return "#0079ff";
+                case "Electric": return "#fff750";
+                case "Grass": return "#5fff53";
+                case "Ice": return "#42eaff";
+                case "Fighting": return "#a92e2e";
+                case "Poison": return "#a241b0";
+                case "Ground": return "#7b4a27";
+                case "Flying": return "#9adbff";
+                case "Psychic": return "#cd58ae";
+                case "Bug": return "#527445";
+                case "Rock": return "#696969";
+                case "Ghost": return "#d2d2d2";
+                case "Dragon": return "#b07e43";
+                case "Dark": return "#353535";
+                case "Steel": return "#848484";
+                case "Fairy": return "#ff43d2";
+                default: return " #ffffff";
+            }
+        }
+
+        function effectColor(effectType) {
+            switch (effectType) {
+                case "PSN": return "#b83ba9";
+                case "PAR": return "#fff416";
+                case "BRN": return "#ff330f";
+                default: return "transparent";
+            }
+        }
+
+        function colorToEffect(effectColor) {
+            switch (effectType) {
+                case "#b83ba9": return "PSN";
+                case "#fff416": return "PAR";
+                case "#ff330f": return "BRN";
+                case "transparent": return "";
+            }
+        }
+
+    </script>
+
+    <!-- RPG Script -->
+    <script>
+        var character = document.getElementById('character');
+        var imagePos = 0;
+        var walking = false;
+
+        function changeStandAction() {
+            character.style.backgroundPosition = imagePos + 'px 0';
+            imagePos += -64;
+            if (imagePos <= -64 * 9) imagePos = 0;
+
+            if (!walking) setTimeout(changeStandAction, 300);
+        }
+
+        changeStandAction();
+
+        document.addEventListener('keydown', function (event) {
+            var key = event.key;
+            var positionX = character.offsetLeft;
+            var positionY = character.offsetTop;
+
+            if (key === 'w') {
+                positionY -= 5;
+                walking = true;
+            } else if (key === 's') {
+                positionY += 5;
+                walking = true;
+            } else if (key === 'a') {
+                positionX -= 5;
+                walking = true;
+                character.style.transform = 'scaleX(-1)';
+            } else if (key === 'd') {
+                positionX += 5;
+                walking = true;
+                character.style.transform = 'scaleX(1)';
+            }
+
+            var canWalk = true;
+
+            // obstacals in tree house outside
+            if (document.getElementById("outside").style.display === "block") {
+                if (isColliding(positionX, positionY, character.getBoundingClientRect(), document.getElementById('obstacle').getBoundingClientRect())) {
+                    canWalk = false;
+                }
+
+                if (isColliding(positionX, positionY, character.getBoundingClientRect(), document.getElementById('obstacle2').getBoundingClientRect())) {
+                    canWalk = false;
+                }
+
+                if (isColliding(positionX, positionY, character.getBoundingClientRect(), document.getElementById('obstacle3').getBoundingClientRect())) {
+                    canWalk = false;
+                }
+
+                if (isColliding(positionX, positionY, character.getBoundingClientRect(), document.getElementById('treeHouse').getBoundingClientRect())) {
+                    canWalk = false;
+                }
+            }
+
+            // obstacals in tree house
+            if (document.getElementById("inside").style.display === "block") {
+                if (isColliding(positionX, positionY, character.getBoundingClientRect(), document.getElementById('obstacle5').getBoundingClientRect())) {
+                    canWalk = false;
+                }
+
+                if (isColliding(positionX, positionY, character.getBoundingClientRect(), document.getElementById('obstacle6').getBoundingClientRect())) {
+                    canWalk = false;
+                }
+
+                if (isColliding(positionX, positionY, character.getBoundingClientRect(), document.getElementById('obstacle7').getBoundingClientRect())) {
+                    canWalk = false;
+                }
+
+                if (isColliding(positionX, positionY, character.getBoundingClientRect(), document.getElementById('counter').getBoundingClientRect())) {
+                    canWalk = false;
+                }
+
+                if (isColliding(positionX, positionY, character.getBoundingClientRect(), document.getElementById('door').getBoundingClientRect())) {
+                    canWalk = false;
+                }
+            }
+
+            if (isColliding(positionX, positionY, character.getBoundingClientRect(), document.getElementById('grass').getBoundingClientRect()) ||
+                isColliding(positionX, positionY, character.getBoundingClientRect(), document.getElementById('grass2').getBoundingClientRect()) ||
+                isColliding(positionX, positionY, character.getBoundingClientRect(), document.getElementById('grass3').getBoundingClientRect()) ||
+                isColliding(positionX, positionY, character.getBoundingClientRect(), document.getElementById('grass4').getBoundingClientRect()) ||
+                isColliding(positionX, positionY, character.getBoundingClientRect(), document.getElementById('grass5').getBoundingClientRect()) ||
+                isColliding(positionX, positionY, character.getBoundingClientRect(), document.getElementById('grass6').getBoundingClientRect())) {
+                console.log('http://localhost:8080?' + "moveInGrass=true");
+                fetch('http://localhost:8080?' + "moveInGrass=true", {
+                    method: 'GET',
+                })
+                    .then(response => response.json())
+                    .then(data => {
+                        document.getElementById("ePokemonImage").src = "./image/" + data.Name + "_front.png";
+                        document.getElementById("ePokemonHpBar").max = data.Hp;
+                        document.getElementById("ePokemonHpBar").value = data.Hp;
+                        document.getElementById("ePokemonName").innerText = data.Name;
+                        document.getElementById("ePokemonLevel").innerText = "LV.50";
+                        document.getElementById("ePokemonType1").src = "./image/" + data.Type1 + ".png";
+
+                        if (data.Type2 != null) {
+                            document.getElementById("ePokemonType2").style.display = "block";
+                            document.getElementById("ePokemonType2").src = "./image/" + data.Type2 + ".png";
+                        }
+                        else document.getElementById("ePokemonType2").style.display = "none";
+                    });
+            }
+
+            const containerWidth = document.body.clientWidth;
+            const containerHeight = document.body.clientHeight;
+            const characterWidth = character.offsetWidth;
+            const characterHeight = character.offsetHeight;
+
+            if (positionY < 0) positionY = 0;
+            else if (positionY > containerHeight - characterHeight) positionY = containerHeight - characterHeight;
+
+            if (positionX < 0) positionX = 0;
+            else if (positionX > containerWidth - characterWidth) positionX = containerWidth - characterWidth;
+
+            if (canWalk) {
+                changeWalkAction();
+
+                character.style.top = positionY + 'px';
+                character.style.left = positionX + 'px';
+            }
+
+        });
+
+        function changeWalkAction() {
+            character.style.backgroundPosition = imagePos + 'px 0';
+            imagePos += -64;
+            if (imagePos <= -64 * 15) imagePos = -64 * 10;
+        }
+
+        document.addEventListener('keyup', function (event) {
+            if (walking) {
+                walking = false;
+                changeStandAction();
+            }
+        });
+
+        function isColliding(x, y, rect1, rect2) {
+            return x < rect2.left + rect2.width &&
+                x + rect1.width > rect2.left &&
+                y < rect2.top + rect2.height &&
+                y + rect1.height > rect2.top;
+        }
+
+        document.getElementById('treeHouse').addEventListener('click', function () {
+            document.body.style.backgroundImage = 'url(./image/pokemonCenter.png)';
+            document.getElementById("inside").style.display = "block";
+            document.getElementById("outside").style.display = "none";
+            character.style.top = "80%";
+            character.style.left = "50%";
+        });
+
+        document.getElementById('door').addEventListener('click', function () {
+            document.body.style.backgroundImage = 'url(./image/RPGbackground.png)';
+            document.getElementById("inside").style.display = "none";
+            document.getElementById("outside").style.display = "block";
+            character.style.top = "30%";
+            character.style.left = "50%";
+        });
+
+    </script>
+
+</body>
+</html>

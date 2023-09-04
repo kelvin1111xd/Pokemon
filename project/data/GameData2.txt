@@ -1,0 +1,14 @@
+3
+Eternatus 4
+DynamaxCannon CrossPoison PoisonTail DragonPulse
+Lugia 4
+WeatherBall Extrasensory Aeroblast FutureSight
+Rapidash 4
+Ember FireBlast TakeDown FlameWheel
+3
+Tyranitar 4
+Bite Earthquake SmackDown HyperBeam
+Snorlax 4
+BodySlam HammerArm Crunch Snore
+Rayquaza 4
+AirSlash DragonAscent Outrage Fly

@@ -1,0 +1,71 @@
+[Turn 1] Venusaur used VineWhip!
+[Turn 1] It's super effective!
+[Turn 1] The opposing Blastoise used AquaTail!
+[Turn 1] It's not very effective...
+[Turn 2] Venusaur used PoisonPowder!
+[Turn 2] The opposing Blastoise was posined!
+[Turn 2] The opposing Blastoise used WaterPulse!
+[Turn 2] It's not very effective...
+[Turn 2] The opposing Blastoise is hurt by its poisoning!
+[Turn 3] Venusaur 137 Blastoise 117 PSN
+[Turn 3] You used a SuperPotion!
+[Turn 3] Venusaur had its HP restored.
+[Turn 3] The opposing Blastoise used AquaTail!
+[Turn 3] It's not very effective...
+[Turn 3] The opposing Blastoise is hurt by its poisoning!
+[Turn 4] Venusaur 106 Blastoise 106 PSN
+[Turn 4] PoisonPowder 34 VineWhip 24 SeedBomb 15 SolarBeam 10
+[Turn 4] Venusaur used SolarBeam!
+[Turn 4] It's super effective!
+[Turn 4] The opposing Blastoise faited!
+[Turn 5] Venusaur, switch out!
+[Turn 5] Come back!
+[Turn 5] Go!Blastoise!
+[Turn 5] The opposing Charizard used AirSlash!
+[Turn 6] Blastoise 133 Charizard 185
+[Turn 6] The opposing Charizard used DragonClaw!
+[Turn 6] Blastoise used AquaTail!
+[Turn 6] It's super effective!
+[Turn 7] Blastoise 100 Charizard 57
+[Turn 7] The opposing Charizard used DragonBreath!
+[Turn 7] Blastoise is paralyzed, so it may be unable to move!
+[Turn 7] Blastoise is paralyzed!
+[Turn 7] It can't move!
+[Turn 8] Blastoise 71 PAR Charizard 57
+[Turn 8] Blastoise, switch out!
+[Turn 8] Come back!
+[Turn 8] Go!Charizard!
+[Turn 8] The opposing Charizard used Flamethrower!
+[Turn 8] Charizard was burned!
+[Turn 8] It's not very effective...
+[Turn 8] Charizard is hurt by its burn!
+[Turn 9] Charizard 138 BRN Charizard 57
+[Turn 9] Charizard used Flamethrower!
+[Turn 9] The opposing Charizard was burned!
+[Turn 9] It's not very effective...
+[Turn 9] The opposing Charizard used Flamethrower!
+[Turn 9] Charizard was burned!
+[Turn 9] It's not very effective...
+[Turn 9] Charizard is hurt by its burn!
+[Turn 9] The opposing Charizard is hurt by its burn!
+[Turn 10] Charizard 91 BRN Charizard 10 BRN
+[Turn 10] Charizard used Ember!
+[Turn 10] The opposing Charizard was burned!
+[Turn 10] It's not very effective...
+[Turn 10] The opposing Charizard faited!
+[Turn 10] Charizard is hurt by its burn!
+[Turn 11] Charizard 80 BRN Venusaur 187
+[Turn 11] Charizard used Ember!
+[Turn 11] The opposing Venusaur was burned!
+[Turn 11] It's super effective!
+[Turn 11] The opposing Venusaur used PoisonPowder!
+[Turn 11] Charizard was posined!
+[Turn 11] Charizard is hurt by its burn!
+[Turn 11] Charizard is hurt by its poisoning!
+[Turn 11] The opposing Venusaur is hurt by its burn!
+[Turn 12] Charizard 58 BRN PSN Venusaur 115 BRN
+[Turn 12] Charizard used Flamethrower!
+[Turn 12] The opposing Venusaur was burned!
+[Turn 12] It's super effective!
+[Turn 12] The opposing Venusaur faited!
+[Turn 12] You Win!
